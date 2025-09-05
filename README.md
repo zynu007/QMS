@@ -1,131 +1,260 @@
-QMS Audit Management System
-This is a full-stack Quality Management System (QMS) application designed for the life science industry, with a focus on audit management. It features a multi-step wizard for creating new audits, a comprehensive list view for tracking them, and an integrated AI assistant to streamline QMS tasks.
+# QMS Audit Management System
 
-🚀 Key Features
-Wizard-style Audit Creation: A user-friendly, multi-step form for creating detailed QMS audit records.
+> A comprehensive Quality Management System (QMS) application designed for the life sciences industry, featuring intelligent audit management and AI-powered insights.
 
-Dynamic Audit List: A searchable and filterable list of all audits, fetched and displayed from the backend.
+## 📋 Table of Contents
 
-AI-Powered Assistant: An integrated AI chat interface on the audit list page that provides intelligent insights and automates common QMS tasks.
+- [Overview](#overview)
+- [Features](#features)
+- [Architecture](#architecture)
+- [Technology Stack](#technology-stack)
+- [Getting Started](#getting-started)
+- [API Documentation](#api-documentation)
+- [AI Assistant Capabilities](#ai-assistant-capabilities)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
-Responsive UI: The application is designed to be responsive and provide a consistent user experience across different devices.
+## 🔍 Overview
 
-Robust Backend: A FastAPI backend that handles all business logic, data validation, and communication with the database.
+The QMS Audit Management System is a full-stack web application that streamlines audit processes in life sciences organizations. Built with modern web technologies and enhanced by AI capabilities, it provides a comprehensive solution for managing audit lifecycles from creation to closure.
 
-Centralized State Management: Redux Toolkit manages the entire application state, ensuring predictable data flow.
+### Problem Statement
 
-<br>
-<br>
+Life sciences organizations face challenges in:
+- Managing complex audit workflows
+- Maintaining regulatory compliance
+- Tracking audit progress and outcomes
+- Generating actionable insights from audit data
 
-⚙️ Tech Stack
-Frontend
-React: A declarative and component-based JavaScript library for building the user interface.
+### Solution
 
-Redux Toolkit: A modern, opinionated Redux approach for efficient state management.
+This system addresses these challenges by providing:
+- Intuitive audit creation and management workflows
+- Real-time tracking and reporting capabilities
+- AI-powered analysis and recommendations
+- Centralized data management with robust validation
 
-Axios: A promise-based HTTP client for making API calls to the backend.
+## ✨ Features
 
-Lucide React: A lightweight icon library to maintain a clean and consistent UI.
+### Core Functionality
 
-Tailwind CSS: A utility-first CSS framework for rapid and consistent styling. The application utilizes a global stylesheet with custom properties and utility classes from the provided HTML templates.
+- **🧙‍♂️ Wizard-Style Audit Creation**: Multi-step guided process for comprehensive audit record creation
+- **📊 Dynamic Audit Dashboard**: Real-time, searchable, and filterable audit list with advanced sorting
+- **🤖 AI-Powered Assistant**: Integrated intelligent assistant for automated QMS task management
+- **📱 Responsive Design**: Consistent user experience across desktop, tablet, and mobile devices
+- **🔐 Data Validation**: Robust input validation ensuring data integrity and compliance
 
-Backend
-FastAPI: A modern, fast (high-performance) Python web framework for building APIs.
+### AI Assistant Capabilities
 
-SQLite: A lightweight, file-based database for local data persistence.
+- **Risk Analysis**: Automated identification of high-risk audit events
+- **Executive Summaries**: Intelligent summarization of open events and audit status
+- **Predictive Insights**: Data-driven recommendations for next steps and process improvements
+- **Trend Analysis**: Pattern recognition for audit frequency, location, and resource allocation
+- **Communication Support**: Automated generation of notifications and compliance reports
 
-SQLAlchemy: An Object-Relational Mapper (ORM) that simplifies database interactions.
+## 🏗️ Architecture
 
-Pydantic: A data validation and settings management library, integrated with FastAPI to ensure data integrity.
+```
+┌─────────────────┐    HTTP/REST API    ┌──────────────────┐
+│   React Frontend │ ◄──────────────── │ FastAPI Backend  │
+│                 │                     │                  │
+│ • Redux Store   │                     │ • Business Logic │
+│ • UI Components │                     │ • Data Validation│
+│ • State Mgmt    │                     │ • AI Integration │
+└─────────────────┘                     └──────────────────┘
+                                                   │
+                                                   ▼
+                                        ┌──────────────────┐
+                                        │ SQLite Database  │
+                                        │                  │
+                                        │ • Audit Records  │
+                                        │ • User Data      │
+                                        │ • System Config  │
+                                        └──────────────────┘
+```
 
-Google Gemini API: Used with the google-generativeai package to power the AI assistant. The model used is 
+## 💻 Technology Stack
 
-gemini-1.5-flash for its efficiency and capability.
+### Frontend
+| Technology | Purpose | Version |
+|------------|---------|---------|
+| **React** | UI Framework | 18.x |
+| **Redux Toolkit** | State Management | Latest |
+| **Axios** | HTTP Client | Latest |
+| **Tailwind CSS** | Styling Framework | 3.x |
+| **Lucide React** | Icon Library | Latest |
 
+### Backend
+| Technology | Purpose | Version |
+|------------|---------|---------|
+| **FastAPI** | Web Framework | Latest |
+| **SQLAlchemy** | ORM | Latest |
+| **Pydantic** | Data Validation | Latest |
+| **SQLite** | Database | 3.x |
+| **Google Gemini API** | AI Integration | gemini-1.5-flash |
 
-📦 Setup & Installation
-Follow these instructions to get the application up and running on your local machine.
+## 🚀 Getting Started
 
-Prerequisites
-Python 3.8+
+### Prerequisites
 
-Node.js 14+
+Ensure you have the following installed on your system:
 
-A valid Google AI Studio API key.
+- **Python 3.8+** ([Download](https://python.org/downloads/))
+- **Node.js 14+** ([Download](https://nodejs.org/))
+- **Google AI Studio API Key** ([Get API Key](https://makersuite.google.com/app/apikey))
 
-Backend Setup
-Navigate to the backend directory.
+### Installation
 
-Bash
+1. **Clone the Repository**
+   ```bash
+   git clone <repository-url>
+   cd qms-audit-system
+   ```
 
-cd backend
-Install Python dependencies from requirements.txt.
+2. **Backend Setup**
+   ```bash
+   # Navigate to backend directory
+   cd backend
+   
+   # Install Python dependencies
+   pip install -r requirements.txt
+   
+   # Set environment variable (choose your OS)
+   # Windows
+   set GOOGLE_API_KEY="your_api_key_here"
+   
+   # macOS/Linux
+   export GOOGLE_API_KEY="your_api_key_here"
+   ```
 
-Bash
+3. **Frontend Setup**
+   ```bash
+   # Navigate to frontend directory
+   cd frontend
+   
+   # Install Node.js dependencies
+   npm install
+   ```
 
-pip install -r requirements.txt
-Set your Google AI Studio API key as an environment variable. The backend code is configured to read from GOOGLE_API_KEY.
+### Running the Application
 
-Windows: set GOOGLE_API_KEY="your_api_key_here"
-
-macOS/Linux: export GOOGLE_API_KEY="your_api_key_here"
-
-Frontend Setup
-Navigate to the frontend directory.
-
-Bash
-
-cd frontend
-Install Node.js dependencies.
-
-Bash
-
-npm install
-▶️ How to Run the Application
-You must run the backend and frontend in separate terminals.
-
-Start the Backend API
-
-From the root project directory, run:
-
-Bash
-
+**Start the Backend Server** (Terminal 1)
+```bash
+# From project root
 uvicorn backend.main:app --reload
-This will start the FastAPI server on http://localhost:8000. It will also automatically seed the database with sample audit data if it's empty.
+```
+- Server runs on: `http://localhost:8000`
+- API documentation: `http://localhost:8000/docs`
 
-Start the Frontend App
-
-From the frontend directory, run:
-
-Bash
-
+**Start the Frontend Application** (Terminal 2)
+```bash
+# From frontend directory
 npm start
-This will start the React development server on http://localhost:3000. The browser should open automatically.
+```
+- Application runs on: `http://localhost:3000`
+- Opens automatically in your default browser
 
-🧠 Design Choices and AI Features
-Design Choices
-Separation of Concerns: The project is split into a backend and frontend folder, a standard practice for full-stack applications. This promotes modularity and scalability.
+### Initial Data
 
-Redux for State: Redux Toolkit was chosen for state management in the frontend to handle the complex data flow between the list view, wizard, and AI assistant. It provides a structured and predictable state container that is easy to debug.
+The application automatically seeds the database with sample audit data on first run, allowing immediate exploration of features.
 
-Pydantic Validation: All data models for the API are defined using Pydantic, which provides automatic data validation and serialization, ensuring data integrity. This is crucial for a QMS application where data accuracy is paramount.
+## 📚 API Documentation
 
-Consistent UI: The application's UI, including styles, icons, and layout, is adapted from the provided HTML/CSS templates to ensure a consistent and polished user experience.
+Once the backend is running, comprehensive API documentation is available at:
+- **Swagger UI**: `http://localhost:8000/docs`
+- **ReDoc**: `http://localhost:8000/redoc`
 
-AI Assistant Features
-The AI assistant is a core component of the QMS module. It's integrated into the list view and is designed to provide actionable insights. The implemented features are orchestrated via the FastAPI backend and use the Gemini API.
+### Key Endpoints
 
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/audits` | GET | Retrieve all audits |
+| `/api/audits` | POST | Create new audit |
+| `/api/audits/{id}` | GET | Get specific audit |
+| `/api/ai/analyze` | POST | AI analysis endpoint |
 
-The AI assistant can perform the following actions, accessible through pre-defined buttons or a chat input:
+## 🤖 AI Assistant Capabilities
 
-Show High-Risk Events: This tool analyzes the current audit data and filters the list to show only events identified as high-risk.
+The integrated AI assistant leverages Google's Gemini-1.5-flash model to provide intelligent QMS support:
 
-Summarize Open Events: This provides an executive summary of all active or planned audits in the system.
+### Available Actions
 
-Suggest Next Steps: When viewing a specific audit's details, the AI can provide context-aware recommendations for the next actions to take.
+| Feature | Description | Use Case |
+|---------|-------------|----------|
+| **High-Risk Analysis** | Identifies and filters high-risk audit events | Risk management prioritization |
+| **Executive Summaries** | Generates comprehensive summaries of open events | Management reporting |
+| **Next Step Recommendations** | Provides context-aware action suggestions | Process optimization |
+| **Trend Analysis** | Analyzes patterns in audit data | Strategic planning |
+| **Notification Generation** | Creates draft communications and reports | Compliance documentation |
 
-Identify Audit Trends: The AI analyzes audit data to find patterns related to frequency, location, and auditor workload, helping management make strategic decisions.
+### Response Format
 
-Generate Notifications: This feature allows the user to quickly create a draft notification for audit communications, such as closure announcements or follow-up reminders.
+AI responses are structured as JSON objects, enabling rich UI presentations including:
+- Formatted tables and charts
+- Actionable bullet points
+- Highlighted risk indicators
+- Progress tracking elements
 
-The AI assistant's responses are structured as a JSON object, which allows the frontend to parse and display the information in a user-friendly format, such as tables or bullet points, rather than plain text.
+## 📁 Project Structure
+
+```
+qms-audit-system/
+├── backend/
+│   ├── models/          # Database models
+│   ├── routes/          # API endpoints
+│   ├── services/        # Business logic
+│   ├── database/        # Database configuration
+│   ├── ai/             # AI integration
+│   ├── main.py         # FastAPI application
+│   └── requirements.txt
+├── frontend/
+│   ├── src/
+│   │   ├── components/  # React components
+│   │   ├── store/      # Redux store
+│   │   ├── services/   # API services
+│   │   ├── utils/      # Utility functions
+│   │   └── App.js      # Main component
+│   ├── public/
+│   └── package.json
+└── README.md
+```
+
+## 🔧 Design Decisions
+
+### Architectural Choices
+
+- **Separation of Concerns**: Clear frontend/backend separation promotes modularity and scalability
+- **Redux State Management**: Centralized state container ensures predictable data flow across complex UI interactions
+- **Pydantic Validation**: Automatic data validation maintains data integrity crucial for QMS compliance
+- **RESTful API Design**: Standard HTTP methods and status codes ensure API predictability
+- **Component-Based UI**: Reusable React components promote maintainability and consistency
+
+### Technology Rationale
+
+- **FastAPI**: Chosen for automatic API documentation, built-in validation, and high performance
+- **SQLite**: Lightweight database suitable for development and small-scale deployments
+- **Tailwind CSS**: Utility-first approach enables rapid UI development with consistent styling
+- **Google Gemini**: Cost-effective AI solution with strong analytical capabilities for QMS tasks
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+### Development Workflow
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+**Built with ❤️ for the Life Sciences Industry**
+
+For questions or support, please open an issue or contact the development team.
